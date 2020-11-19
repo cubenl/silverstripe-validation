@@ -21,7 +21,7 @@ Inspired by the `Illuminate\Validation` Laravel way of defining validation rules
 ### Installation
 
 ```
-composer require "cubenl/silverstripe-validation"
+composer require cubenl/silverstripe-validation
 ```
 
 ## Documentation

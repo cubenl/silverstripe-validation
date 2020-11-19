@@ -1,69 +1,41 @@
 language: php
-dist: bionic
+
+dist: xenial
+
 services:
   - mysql
   - postgresql
-cache:
-  directories:
-    - $HOME/.composer/cache/files
+
 env:
   global:
-    - COMPOSER_ROOT_VERSION=4.x-dev
+    - COMPOSER_ROOT_VERSION="2.0.x-dev"
+
 matrix:
   include:
-    -
-      php: 7.4
-      env: 'DB=PGSQL INSTALLER_VERSION=4.5.x-dev PHPUNIT_TEST=1'
-    -
-      php: 7.1
-      env: 'DB=MYSQL INSTALLER_VERSION=4.2.x-dev PHPUNIT_COVERAGE_TEST=1'
-    -
-      php: 7.2
-      env: 'DB=MYSQL INSTALLER_VERSION=4.3-dev PHPUNIT_TEST=1'
-    -
-      php: 7.3
-      env: 'DB=MYSQL INSTALLER_VERSION=4.x-dev PHPUNIT_TEST=1'
-    -
-      php: 7.4
-      env: PHPCS_TEST=1
-    -
-      php: 7.4
-      env: DUPLICATE_CODE_CHECK=1
-    -
-      php: 7.4
-      env: LINT_CHECK=1
-    -
-      php: 7.4
-      env: PHPSTAN_TEST=1
-before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS travis_ci_test;'
-  - psql -c 'create database travis_ci_test;' -U postgres
+    - php: 5.6
+      env: DB=MYSQL PHPUNIT_TEST=1 RECIPE_VERSION="^1 --prefer-lowest"
+    - php: 7.0
+      env: DB=PGSQL PHPUNIT_TEST=1 RECIPE_VERSION="^1"
+    - php: 7.1
+      env: DB=MYSQL PHPUNIT_COVERAGE_TEST=1 RECIPE_VERSION="^4 --prefer-lowest"
+    - php: 7.2
+      env: DB=MYSQL PHPUNIT_TEST=1 PHPCS_TEST=1 RECIPE_VERSION="^4"
+    - php: 7.3
+      env: DB=MYSQL PHPUNIT_COVERAGE_TEST=1 RECIPE_VERSION="4.x-dev"
 
 before_script:
-  - 'phpenv rehash'
-  - 'phpenv config-rm xdebug.ini'
-  - 'composer validate'
-  - 'echo $INSTALLER_VERSION'
-  - 'export UNIT_TESTING_CONFIG_ENABLED=1'
-  - echo 'SS_BASE_URL="http://localhost"' > .env
-  - echo 'SS_DATABASE_CLASS="MySQLPDODatabase"' >> .env
-  - echo 'SS_DATABASE_NAME="travis_ci_test"' >> .env
-  - echo 'SS_DATABASE_USERNAME="root"' >> .env
-  - echo 'SS_DATABASE_PASSWORD=""' >> .env
-  - echo 'SS_DATABASE_SERVER="localhost"' >> .env
+  - phpenv rehash
+  - phpenv config-rm xdebug.ini
 
-  - 'composer require --prefer-source --no-update silverstripe/recipe-cms:4.4.x-dev'
-  - 'if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:2.x-dev; fi'
-  - 'composer install --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile'
-  - 'vendor/bin/sake dev/build flush=all'
-  - 'php vendor/silverstripe/framework/tests/dump_constants.php'
-  - 'if [[ $DUPLICATE_CODE_CHECK ]]; then sudo apt remove -y nodejs && curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && sudo bash nodesource_setup.sh && sudo apt install -y build-essential nodejs && which npm && npm install jscpd@3.2.1  ;fi'
+  - composer validate
+  - composer require --prefer-dist --no-update silverstripe/recipe-cms:$RECIPE_VERSION
+  - if [[ $DB == PGSQL ]]; then composer require --no-update silverstripe/postgresql:^2; fi
+  - composer install --prefer-dist --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile
+
 script:
-  - 'if [[ $PHPUNIT_TEST ]]; then  vendor/bin/phpunit tests/ flush=all; fi'
-  - 'if [[ $PHPUNIT_COVERAGE_TEST ]]; then phpdbg -qrr vendor/bin/phpunit --coverage-clover=coverage.xml tests/ flush=all; fi'
-  - 'if [[ $PHPCS_TEST ]]; then vendor/bin/phpcs --standard=ruleset.xml --extensions=php --tab-width=4 -sp src tests ; fi'
-  - 'if [[ $DUPLICATE_CODE_CHECK ]]; then node_modules/jscpd/bin/jscpd src && node_modules/jscpd/bin/jscpd tests ; fi'
-  - 'if [[ $LINT_CHECK ]]; then vendor/bin/parallel-lint src/ tests/ ; fi'
-  - 'if [[ $PHPSTAN_TEST ]]; then vendor/bin/phpstan analyse --level=6 -c tests/phpstan.neon src/ ; fi'
+  - if [[ $PHPUNIT_TEST ]]; then vendor/bin/phpunit; fi
+  - if [[ $PHPUNIT_COVERAGE_TEST ]]; then phpdbg -qrr vendor/bin/phpunit --coverage-clover=coverage.xml; fi
+  - if [[ $PHPCS_TEST ]]; then vendor/bin/phpcs src/ tests/ ; fi
+
 after_success:
-  - 'if [[ $PHPUNIT_COVERAGE_TEST ]]; then bash <(curl -s https://codecov.io/bash) -f coverage.xml; fi'
+  - if [[ $PHPUNIT_COVERAGE_TEST ]]; then bash <(curl -s https://codecov.io/bash) -f coverage.xml; fi

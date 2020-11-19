@@ -1,10 +1,13 @@
 # SilverStripe Validation
 
-[![Build Status](https://travis-ci.org/gordonbanderson/travistestmodule.svg?branch=master)](https://travis-ci.org/gordonbanderson/travistestmodule)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gordonbanderson/travistestmodule/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gordonbanderson/travistestmodule/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/gordonbanderson/travistestmodule/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/gordonbanderson/travistestmodule/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/gordonbanderson/travistestmodule/badges/build.png?b=master)](https://scrutinizer-ci.com/g/gordonbanderson/travistestmodule/build-status/master)
-[![codecov.io](https://codecov.io/github/gordonbanderson/travistestmodule/coverage.svg?branch=master)](https://codecov.io/github/gordonbanderson/travistestmodule?branch=master)
+[![Build Status](https://travis-ci.org/cubenl/silverstripe-validation.svg?branch=master)](https://travis-ci.org/cubenl/silverstripe-validation)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cubenl/silverstripe-validation/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cubenl/silverstripe-validation/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/cubenl/silverstripe-validation/badges/build.png?b=master)](https://scrutinizer-ci.com/g/cubenl/silverstripe-validation/build-status/master)
+[![codecov.io](https://codecov.io/github/cubenl/silverstripe-validation/coverage.svg?branch=master)](https://codecov.io/github/cubenl/silverstripe-validation?branch=master)
+
+[![GitHub Code Size](https://img.shields.io/github/languages/code-size/cubenl/silverstripe-validation)](https://github.com/cubenl/silverstripe-validation)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/cubenl/silverstripe-validation)](https://github.com/cubenl/silverstripe-validation)
+[![GitHub Issues](https://img.shields.io/github/issues/cubenl/silverstripe-validation)](https://github.com/cubenl/silverstripe-validation/issues)
 
 SilverStripe module for out of the box validating DataObjects and more! <br>
 Inspired by the `Illuminate\Validation` Laravel way of defining validation rules.

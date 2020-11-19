@@ -1,0 +1,8 @@
+# Mock date is set to 2020-10-01 20:00:00
+# Write to tables rather than dataobjects for performance
+Cube\SilverStripe\Validation\Tests\Stub\Customer:
+  foo:
+    Name: Foo
+    Company: Cube
+  bar:
+    Name: Bar

@@ -1,0 +1,6 @@
+---
+Name: validation-extensions
+---
+SilverStripe\ORM\DataObject:
+  extensions:
+    - Cube\SilverStripe\Validation\Extensions\ValidationExtension

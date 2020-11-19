@@ -1,0 +1,38 @@
+{
+    "name": "cube/silverstripe-validation",
+    "description": "Validation module for SilverStripe 4",
+    "license": "BSD-3-Clause",
+    "type": "silverstripe-vendormodule",
+    "authors": [
+        {
+            "name": "Tom Oude Rengerink",
+            "email": "tom@cube.nl"
+        }
+    ],
+    "keywords": [
+        "silverstripe",
+        "validation",
+        "validate",
+        "fields"
+    ],
+    "autoload": {
+        "psr-4": {
+            "SilverStripe\\Validation\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SilverStripe\\Validation\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.1.0",
+        "silverstripe/framework": "^4",
+        "egulias/email-validator": "^2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,11 @@
+nl:
+  Cube\SilverStripe\Validation\MessageProvider:
+    required: '{field} is een verplicht veld.'
+    numeric: '{field} mag alleen cijfers bevatten.'
+    string: '{field} mag alleen letters bevatten.'
+    email: '{field} moet een geldig e-mailadres zijn.'
+    min: '{field} moet minimaal {min} zijn.'
+    min_length: '{field} moet minimaal uit {min} karakters bestaan.'
+    max: '{field} mag niet groter zijn dan {max_numeric}.'
+    max_length: '{field} mag niet meer zijn dan {max} karakters.'
+    regex: '{field} is niet van het juiste format.'

@@ -1,5 +1,5 @@
 {
-    "name": "cube/silverstripe-validation",
+    "name": "cubenl/silverstripe-validation",
     "description": "Validation module for SilverStripe 4",
     "license": "BSD-3-Clause",
     "type": "silverstripe-vendormodule",

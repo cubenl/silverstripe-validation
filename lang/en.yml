@@ -7,5 +7,5 @@ en:
     min: 'The {field} must be at least {min}.'
     min_length: 'The {field} must be at least {min_length} characters.'
     max: 'The {field} may not be greater than {max}.'
-    max_length: 'The {field} may not be greater than {max} characters.'
+    max_length: 'The {field} may not be greater than {max_length} characters.'
     regex: 'The format of {field} is invalid.'

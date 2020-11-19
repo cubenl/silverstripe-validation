@@ -19,6 +19,11 @@
     "support": {
         "issues": "http://github.com/cubenl/silverstripe-validation/issues"
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Cube\\SilverStripe\\Validation\\": "src/"

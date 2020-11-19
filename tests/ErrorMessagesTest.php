@@ -6,7 +6,6 @@ use Exception;
 use SilverStripe\Dev\SapphireTest;
 use Cube\SilverStripe\Validation\Validator;
 
-
 /**
  * Class ErrorMessagesTest
  * @package Cube\SilverStripe\Validation\Tests
@@ -18,7 +17,8 @@ class ErrorMessagesTest extends SapphireTest
      */
     public function testErrorMessageExists()
     {
-        $validator = Validator::make([],
+        $validator = Validator::make(
+            [],
             ['Name' => 'required']
         );
 
@@ -34,7 +34,8 @@ class ErrorMessagesTest extends SapphireTest
      */
     public function testCustomErrorMessage()
     {
-        $validator = Validator::make([],
+        $validator = Validator::make(
+            [],
             ['Name' => 'required']
         );
 
@@ -47,6 +48,5 @@ class ErrorMessagesTest extends SapphireTest
         $validator->validate();
 
         $this->assertEquals('This is a custom message', $validator->errors('Name')[0]);
-
     }
 }

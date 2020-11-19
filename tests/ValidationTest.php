@@ -6,7 +6,6 @@ use Exception;
 use SilverStripe\Dev\SapphireTest;
 use Cube\SilverStripe\Validation\Validator;
 
-
 /**
  * Class ValidationTest
  * @package Cube\SilverStripe\Validation\Tests

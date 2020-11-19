@@ -65,7 +65,6 @@ class ValidationRuleParser
         }
 
         foreach ($rules as $rule) {
-
             $arguments = [];
 
             if (strpos($rule, ':') !== false) {
@@ -106,5 +105,4 @@ class ValidationRuleParser
 
         return $parser;
     }
-
 }

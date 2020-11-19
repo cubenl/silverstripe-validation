@@ -6,7 +6,6 @@ use Exception;
 use SilverStripe\Dev\SapphireTest;
 use Cube\SilverStripe\Validation\Validator;
 
-
 /**
  * Class CustomValidationRuleTest
  * @package Cube\SilverStripe\Validation\Tests
@@ -39,5 +38,3 @@ class CustomValidationRuleTest extends SapphireTest
         $validator->validate();
     }
 }
-
-

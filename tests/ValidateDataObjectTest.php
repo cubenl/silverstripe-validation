@@ -41,6 +41,4 @@ class ValidateDataObjectTest extends SapphireTest
 
         $bar->write();
     }
-
-
 }

@@ -37,13 +37,11 @@ class ValidationExtension extends DataExtension
         }
 
         if (!$validator->validate()) {
-
             foreach ($validator->errors() as $field => $messages) {
                 foreach ($messages as $message) {
                     $result->addFieldError($field, $message);
                 }
             }
-
         }
 
         return $result;

@@ -6,7 +6,6 @@ use SilverStripe\Dev\TestOnly;
 use SilverStripe\ORM\DataObject;
 use Cube\SilverStripe\Validation\Interfaces\ValidationRules;
 
-
 /**
  * Class Customer
  * @package Cube\SilverStripe\Validation\Tests\Stub

@@ -55,7 +55,9 @@ class MessageProvider
             return $message;
         }
 
-        return _t(__CLASS__.".{$this->rule}", $this->rule,
+        return _t(
+            __CLASS__.".{$this->rule}",
+            $this->rule,
             array_merge(['field' => $field], $this->arguments)
         );
     }

@@ -48,7 +48,7 @@ class ValidationRules
 
         if (method_exists($this, $method)) {
             $this->validationMethod = $method;
-        } else if ($customRule = $this->getCustomValidationRule($rule)) {
+        } elseif ($customRule = $this->getCustomValidationRule($rule)) {
             $this->validationMethod = $customRule;
         } else {
             // This rule does not exist
@@ -64,7 +64,6 @@ class ValidationRules
     private function getCustomValidationRule(string $rule)
     {
         foreach (ClassInfo::implementorsOf(Rule::class) as $class) {
-
             $properties = get_class_vars($class);
 
             if (isset($properties['name']) && $rule === $properties['name']) {

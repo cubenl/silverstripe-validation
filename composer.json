@@ -31,7 +31,7 @@
     },
     "require": {
         "php": ">=7.1.0",
-        "silverstripe/recipe-cms": "4.x-dev",
+        "silverstripe/framework": "^4.0",
         "egulias/email-validator": "^2.1"
     },
     "require-dev": {

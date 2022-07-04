@@ -35,7 +35,7 @@
         }
     },
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.2.0",
         "silverstripe/framework": "^4.0",
         "egulias/email-validator": "^3.2"
     },

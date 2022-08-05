@@ -2,8 +2,6 @@
 
 namespace Cube\SilverStripe\Validation;
 
-use Egulias\EmailValidator\EmailValidator;
-use Egulias\EmailValidator\Validation\RFCValidation;
 use Exception;
 use SilverStripe\Core\ClassInfo;
 use Cube\SilverStripe\Validation\Interfaces\Rule;
@@ -183,8 +181,6 @@ class ValidationRules
      */
     protected function validateEmail($value)
     {
-        $validator = new EmailValidator();
-
-        return $validator->isValid($value, new RFCValidation());
+        return filter_var($value, FILTER_VALIDATE_EMAIL);
     }
 }

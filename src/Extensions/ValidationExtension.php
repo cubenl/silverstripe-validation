@@ -2,38 +2,40 @@
 
 namespace Cube\SilverStripe\Validation\Extensions;
 
+use SilverStripe\ORM\DataObject;
 use Exception;
 use SilverStripe\Core\ClassInfo;
-use SilverStripe\ORM\DataExtension;
-use SilverStripe\ORM\ValidationResult;
 use Cube\SilverStripe\Validation\Interfaces\ValidationRules;
 use Cube\SilverStripe\Validation\Validator;
+use SilverStripe\Core\Validation\ValidationResult;
+use SilverStripe\Core\Extension;
 
 /**
  * Class ValidationExtension
  * @package Cube\SilverStripe\Validation\Extensions
+ * @extends Extension<(DataObject & static)>
  */
-class ValidationExtension extends DataExtension
+class ValidationExtension extends Extension
 {
     /**
      * @param ValidationResult $result
      * @return ValidationResult|void
      * @throws Exception
      */
-    public function validate(ValidationResult $result)
+    public function updateValidate(ValidationResult $result)
     {
-        if (!ClassInfo::classImplements($this->owner->ClassName, ValidationRules::class)) {
+        if (!ClassInfo::classImplements($this->getOwner()->ClassName, ValidationRules::class)) {
             // DataObject does not implement the Validation Interface
             return $result;
         }
 
-        $data = $this->owner->toMap();
-        $rules = $this->owner->rules();
+        $data = $this->getOwner()->toMap();
+        $rules = $this->getOwner()->rules();
 
         $validator = Validator::make($data, $rules);
 
-        if (method_exists($this->owner, 'messages')) {
-            $validator->setCustomMessages($this->owner->messages());
+        if (method_exists($this->getOwner(), 'messages')) {
+            $validator->setCustomMessages($this->getOwner()->messages());
         }
 
         if (!$validator->validate()) {

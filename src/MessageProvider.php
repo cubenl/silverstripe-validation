@@ -36,7 +36,7 @@ class MessageProvider
      * @param array $arguments
      * @param array|null $messages
      */
-    public function __construct(string $rule, string $field = '', array $arguments = [], array $messages = null)
+    public function __construct(string $rule, string $field = '', array $arguments = [], ?array $messages = null)
     {
         $this->rule = $rule;
         $this->field = $field;
